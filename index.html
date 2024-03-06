@@ -22,12 +22,12 @@
     <div id='sketchBody'>
         <h1>hello</h1>
         <script>
-            const sketchBody = document.querySelector('sketchBody')
+            const sketchBody = document.querySelector('#sketchBody')
             i = 0 
 
             function gridBody(squares = 64) {
                 for (i = 0; i < squares; i++) {
-                    const cube = document.createElement('div')
+                    let cube = document.createElement('div')
                     cube.classList.add('cell');
                     sketchBody.appendChild(cube);
                 }
