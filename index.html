@@ -9,18 +9,33 @@
     
 </head>
     <div id='title-container'>
-        <h1 id='Title'>Etch-a-Sketch!</h1>
-        <button id='squares'>Squares?</button>
-        <button id='randomize'>Randomize</button>
-        <button id='fade-effect'>Fade-Effect</button>
+        <div id='title-block'>
+            <h1 id='Title'>Etch-a-Sketch!</h1>
+        </div>
+        <div id='button-block'>
+            <button id='squares'>Squares?</button>
+            <button id='randomize'>Randomize</button>
+            <button id='fade-effect'>Fade-Effect</button>
+        </div>
     </div>
 <body>
     <div id='sketchBody'>
-    </div>
+        <h1>hello</h1>
+        <script>
+            const sketchBody = document.querySelector('sketchBody')
+            i = 0 
 
-    <script>
-        const sketchBody = document.querySelector('#sketchBody')
-    </script>
+            function gridBody(squares = 64) {
+                for (i = 0; i < squares; i++) {
+                    const cube = document.createElement('div')
+                    cube.classList.add('cell');
+                    sketchBody.appendChild(cube);
+                }
+            }
+            
+            gridBody()
+        </script>
+    </div>
 
 </body>
 </html>
