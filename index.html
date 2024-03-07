@@ -26,7 +26,12 @@
                 i = 0 
 
                 function gridBody(squares = 64) {
-                    for (i = 0; i < squares; i++) {
+                    if (squares > 64 || squares < 0) {
+                        alert('Grid error! Enter a value greater than 0, less than 65 ')
+                    return; }
+                    let squared = squares * squares
+                    let sqFullRow = squared - (squared % 60)
+                    for (i = 0; i < sqFullRow; i++) {
                         let cube = document.createElement('div')
                         cube.classList.add('cell');
                         gridBodyContainer.appendChild(cube);
@@ -34,6 +39,11 @@
                 }
                 
                 gridBody()
+
+                let cells = document.getElementsByClassName('cell')
+                for ( i = 0; i < cells.length; i++) {
+                    cells[i].addEventListener('mouseover',cell.toggleClass(darkcell))
+                }
         </script>
     </div>
 

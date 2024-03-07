@@ -27,7 +27,7 @@ Instructions:
     Research button tags in HTML and how can you can make a JS function run when one 
     is clicked.
     Research prompts as well
-    You should be able to enter 64 and have a brand new 64 x 64 gird pop without 
+    You should be able to enter 64 and have a brand new 64 x 64 grid pop without 
     changing the total amount of pixels used.
 
     Extra Credit:

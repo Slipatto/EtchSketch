@@ -57,11 +57,11 @@ body {
     border-radius: 25px;
     margin-top: 32px;
     margin-bottom: 32px;
-    width: 775px;
-    height: 775px;
+    width: 600px;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 50px;
     column-gap: 0px;
     row-gap: 0px;
     align-content: flex-start;
@@ -74,6 +74,6 @@ body {
     min-height: 10px;
     max-width: 50px;
     max-height: 50px; */
-    width: 30px;
-    height: 30px;
+    width: 8px;
+    height: 8px;
 }
