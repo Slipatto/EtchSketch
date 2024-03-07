@@ -20,20 +20,20 @@
     </div>
 <body>
     <div id='sketchBody'>
-        <h1>hello</h1>
-        <script>
-            const sketchBody = document.querySelector('#sketchBody')
-            i = 0 
+        <div id="gridBodyContainer">
+            <script>
+                const gridBodycontainer = document.querySelector('#gridBodyContainer')
+                i = 0 
 
-            function gridBody(squares = 64) {
-                for (i = 0; i < squares; i++) {
-                    let cube = document.createElement('div')
-                    cube.classList.add('cell');
-                    sketchBody.appendChild(cube);
+                function gridBody(squares = 64) {
+                    for (i = 0; i < squares; i++) {
+                        let cube = document.createElement('div')
+                        cube.classList.add('cell');
+                        gridBodyContainer.appendChild(cube);
+                    }
                 }
-            }
-            
-            gridBody()
+                
+                gridBody()
         </script>
     </div>
 
