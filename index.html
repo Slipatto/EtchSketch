@@ -22,8 +22,9 @@
     <div id='sketchBody'>
         <div id="gridBodyContainer">
             <script>
-                const gridBodycontainer = document.querySelector('#gridBodyContainer')
+                const gridBodyContainer = document.querySelector('#gridBodyContainer')
                 i = 0 
+                let cube = document.createElement('div')
 
                 function gridBody(squares = 64) {
                     if (squares > 64 || squares < 0) {
@@ -40,9 +41,13 @@
                 
                 gridBody()
 
-                let cells = document.getElementsByClassName('cell')
-                for ( i = 0; i < cells.length; i++) {
-                    cells[i].addEventListener('mouseover',cell.toggleClass(darkcell))
+                let cells = document.getElementsByClassName('cell');
+
+                for (let i = 0; i < cells.length; i++) {
+                    cells[i].addEventListener('mouseover', function marker() {
+                        cells[i].classList.add('darkcell');
+                        cells[i].removeEventListener('mouseover', marker);
+                    });
                 }
         </script>
     </div>
