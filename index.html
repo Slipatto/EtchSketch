@@ -22,10 +22,25 @@
     <div id='sketchBody'>
         <div id="gridBodyContainer">
             <script>
+                // Create a variable to reference the div gridBodyContainer in the html
                 const gridBodyContainer = document.querySelector('#gridBodyContainer')
+                
+                // Declare i = 0 to use as an interval later
                 i = 0 
+
+                // Create the cube variable for the cubes to create the grid
                 let cube = document.createElement('div')
 
+                // Use cells to reference the class of the cubes which we will change
+                let cells = document.getElementsByClassName('cell');
+
+                // Create reference to 'squares' button
+                let squares = document.getElementById('squares')
+
+                // Create reference to 'randomize' button
+                let randomize = document.getElementById('randomize')
+
+                // Function to create the grid for drawing on
                 function gridBody(squares = 64) {
                     if (squares > 64 || squares < 0) {
                         alert('Grid error! Enter a value greater than 0, less than 65 ')
@@ -38,17 +53,76 @@
                         gridBodyContainer.appendChild(cube);
                     }
                 }
+
+                // Function to clear the grid before re-drawing
+                function emptyGrid() {
+                    gridBodyContainer.innerHTML = '';
+                }
                 
-                gridBody()
+                // Basic sketch function to darken the cells
+                function sketchFunction() {
+                //     for (let i = 0; i < cells.length; i++) {
+                //     cells[i].addEventListener('mouseover', function marker() {
+                //         cells[i].classList.add('darkcell');
+                //         cells[i].removeEventListener('mouseover', marker);
+                //         });
+                //     }
+                // }
+                    let cubes = document.querySelectorAll('.cell');
 
-                let cells = document.getElementsByClassName('cell');
-
-                for (let i = 0; i < cells.length; i++) {
-                    cells[i].addEventListener('mouseover', function marker() {
-                        cells[i].classList.add('darkcell');
-                        cells[i].removeEventListener('mouseover', marker);
+                    cubes.forEach(cube => {
+                        cube.addEventListener('mouseover', function marker() {
+                            cube.classList.add('darkcell');
+                            cube.removeEventListener('mouseover', marker);
+                        });
                     });
                 }
+
+                // Create random number to randomize color
+                function randomNumber() {
+                    return Math.floor(Math.random() * 255);
+                }
+
+                // Randomized sketch function 
+                function randomSketch() {
+                    let cubes = document.querySelectorAll('.cell')
+                   
+                    cubes.forEach(cube => {
+                        cube.addEventListener('mouseover', function randomMarker() {
+                            cube.style.backgroundColor = 'rgba(' + randomNumber() + ','
+                            + randomNumber() + ',' + randomNumber() + ')';
+                        });
+                    });
+                    // for (let i = 0; i < cells.length; i++) {
+                    //     cells[i].addEventListener('mouseover', function randomMarker() {
+                    //         cells[i].style.backgroundColor = 'rgba(' + randomNumber() + ','
+                    //         randomNumber() + ',' + randomNumber() + ')'
+                    //         cells[i].removeEventListener('mouseover', randomMarker);
+                    //     })
+                    // }
+                }
+                // Create the initial sketchboard
+                let board = gridBody()
+                
+                // Initialize the sketch Function
+                sketchFunction()
+
+                // Code for squares? Button to clear, redraw and re-initialize sketchFunction
+                squares.addEventListener('click', () => {
+                    emptyGrid()
+                    let input = prompt("Please enter a number of squares for the grid to display. (Between 0 and 64)");
+                    let integerInput = Number(input);
+                    board = gridBody((integerInput));
+                   sketchFunction()
+                })
+
+                randomize.addEventListener('click', () => {
+                    randomSketch()
+                })
+
+
+
+
         </script>
     </div>
 
