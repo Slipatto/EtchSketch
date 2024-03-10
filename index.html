@@ -15,7 +15,7 @@
         <div id='button-block'>
             <button id='squares'>Squares?</button>
             <button id='randomize'>Randomize</button>
-            <button id='fade-effect'>Fade-Effect</button>
+            <button id='fadeEffect'>Fade-Effect</button>
         </div>
     </div>
 <body>
@@ -40,6 +40,25 @@
                 // Create reference to 'randomize' button
                 let randomize = document.getElementById('randomize')
 
+                //Create a reference to Fade-Effect button
+                let fadeEffect = document.getElementById('fadeEffect')
+
+                // Create Fade Values
+                const fade10 = 'rgb(230, 230, 230)'
+                const fade20 = 'rgb(204, 204, 204)'
+                const fade30 = 'rgb(179, 179, 179)'
+                const fade40 = 'rgb(153, 153, 153)'
+                const fade50 = 'rgb(128, 128, 128)'
+                const fade60 = 'rgb(102, 102, 102)'
+                const fade70 = 'rgb(77, 77, 77)'
+                const fade80 = 'rgb(51, 51, 51)'
+                const fade90 = 'rgb(26, 26, 26)'
+                const fade100 = 'rgb(0, 0, 0)'
+
+                // Create an array to store the values for the fadeEffect
+                let fadeArray = [fade10, fade20, fade30, fade40, fade50,
+                    fade60, fade70, fade80, fade90, fade100]
+
                 // Function to create the grid for drawing on
                 function gridBody(squares = 64) {
                     if (squares > 64 || squares < 0) {
@@ -61,13 +80,6 @@
                 
                 // Basic sketch function to darken the cells
                 function sketchFunction() {
-                //     for (let i = 0; i < cells.length; i++) {
-                //     cells[i].addEventListener('mouseover', function marker() {
-                //         cells[i].classList.add('darkcell');
-                //         cells[i].removeEventListener('mouseover', marker);
-                //         });
-                //     }
-                // }
                     let cubes = document.querySelectorAll('.cell');
 
                     cubes.forEach(cube => {
@@ -91,16 +103,28 @@
                         cube.addEventListener('mouseover', function randomMarker() {
                             cube.style.backgroundColor = 'rgba(' + randomNumber() + ','
                             + randomNumber() + ',' + randomNumber() + ')';
+                            cube.removeEventListener('mouseover', randomMarker);
                         });
                     });
-                    // for (let i = 0; i < cells.length; i++) {
-                    //     cells[i].addEventListener('mouseover', function randomMarker() {
-                    //         cells[i].style.backgroundColor = 'rgba(' + randomNumber() + ','
-                    //         randomNumber() + ',' + randomNumber() + ')'
-                    //         cells[i].removeEventListener('mouseover', randomMarker);
-                    //     })
-                    // }
                 }
+
+                function fadeEffectSketch() {
+                    let cubes = document.querySelectorAll('.cell')
+
+                    cubes.forEach(cube => {
+                        let fadeIndex = 0;
+
+                        cube.addEventListener('mouseover', function fadeMarker() {
+                            if (fadeIndex < fadeArray.length) {
+                                cube.style.backgroundColor = fadeArray[fadeIndex];
+                                fadeIndex++;
+                            } else {
+                                cube.removeEventListener('mouseover', fadeMarker);
+                            }
+                        });
+                    });
+                }
+
                 // Create the initial sketchboard
                 let board = gridBody()
                 
@@ -118,6 +142,10 @@
 
                 randomize.addEventListener('click', () => {
                     randomSketch()
+                })
+
+                fadeEffect.addEventListener('click', () => {
+                    fadeEffectSketch()
                 })
 
 
